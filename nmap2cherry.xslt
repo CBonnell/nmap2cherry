@@ -34,7 +34,6 @@ SOFTWARE.
     
     <xsl:template match="nmaprun">
         <node prog_lang="custom-colors" name="Scan Result">
-
             <rich_text>
                 <xsl:value-of select="concat('Arguments: ', @args, '&#xA;')" />
             </rich_text>
@@ -65,12 +64,8 @@ SOFTWARE.
                     <xsl:value-of select="concat('&#xA;Hostname: ', @name, ' (', @type, ')')" />
                 </xsl:for-each>
             </rich_text>
-            <xsl:for-each select="ports/port">
-                <xsl:apply-templates select="." />
-            </xsl:for-each>
-            <xsl:for-each select="hostscript/script">
-                <xsl:apply-templates select="." />
-            </xsl:for-each>
+            <xsl:apply-templates select="ports/port" />
+            <xsl:apply-templates select="hostscript/script" />
         </node>
     </xsl:template>
 
@@ -107,6 +102,7 @@ SOFTWARE.
                         </xsl:if>
                     </rich_text>
                 </xsl:if>
+                <xsl:apply-templates select="script" />
             </node>
         </xsl:if>
     </xsl:template>
@@ -119,4 +115,3 @@ SOFTWARE.
         </node>
     </xsl:template>
 </xsl:stylesheet>
-

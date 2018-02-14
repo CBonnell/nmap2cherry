@@ -8,7 +8,15 @@ While studying for the Offensive Security Certified Professional training, I fou
 
 # How to run
 1. Do an nmap scan and specify the <code>-oX</code> output option so that the scan results are output to an XML file.
-2. Run an XSLT 3.0-compatible XSLT processor on the output file (I've used Saxon 9 <http://saxon.sourceforge.net/> with good results), specifying the nmap2cherry XSLT and an output file with a file extension of <code>.ctd</code>. Here's an example command line invocation: <code>Transform.exe \-xsl:nmap2cherry.xslt \-s:nmap\_results.xml -o:nmap\_results.ctd</code>
+2. Run an XSLT 3.0-compatible XSLT processor on the output file (I've used Saxon 9 <http://saxon.sourceforge.net/> with good results), specifying the nmap2cherry XSLT and an output file with a file extension of <code>.ctd</code>.
+
+    Here's an example command line invocation for Windows:
+    
+    <code>Transform.exe \-xsl:nmap2cherry.xslt \-s:nmap\_results.xml -o:nmap\_results.ctd</code>
+    
+    And an example for Linux ([adapted from Nmap's "Creating HTML Reports" documentation page](https://nmap.org/book/output-formats-output-to-html.html)):
+    
+    <code>java -jar saxon9.jar \-xsl:nmap2cherry.xslt \-s:nmap\_results.xml -o:nmap\_results.ctd</code>
 3. Open the output <code>.ctd</code> file directly in CherryTree, or import it into an existing CherryTree document using the <code>Nodes Import</code> function.
 
 # Found a problem or have a feature request?
